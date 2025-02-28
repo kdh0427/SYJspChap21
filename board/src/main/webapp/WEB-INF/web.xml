@@ -26,7 +26,7 @@
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>util.CharactorEncodingFilter</filter-class>
+		<filter-class>util.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>utf-8</param-value>
@@ -54,5 +54,15 @@
     	<servlet-name>ControllerUsingURI</servlet-name>
     	<url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+		<filter-name>LoginCheckFilter</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/changePwd.do</url-pattern>
+	</filter-mapping>
 	
 </web-app>
