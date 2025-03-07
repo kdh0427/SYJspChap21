@@ -113,6 +113,16 @@ public class ArticleDao {
 		}
 	}
 
+	public int update(Connection conn, int no, String title) throws SQLException {
+		try (PreparedStatement pstmt = conn.prepareStatement(
+				"update article set title = ?, moddate = now() " +
+				"where article_no = ?")) {
+			pstmt.setString(1, title);
+			pstmt.setInt(2, no);
+			return pstmt.executeUpdate();
+		}
+	}
+
 	private Date toDate(Timestamp timestamp) {
 		return new Date(timestamp.getTime());
 	}

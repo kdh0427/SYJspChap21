@@ -13,7 +13,7 @@ import auth.service.User;
 import mvc.command.CommandHandler;
 
 public class WriteArticleHandler implements CommandHandler {
-	private static final String FROM_VIEW = "/view/newArticleForm.jsp";
+	private static final String FORM_VIEW = "/view/newArticleForm.jsp";
 	private WriteArticleService writeService = new WriteArticleService();
 
 	@Override
@@ -29,7 +29,7 @@ public class WriteArticleHandler implements CommandHandler {
 	}
 
 	public String processForm(HttpServletRequest req, HttpServletResponse res) {
-		return FROM_VIEW;
+		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
@@ -41,7 +41,7 @@ public class WriteArticleHandler implements CommandHandler {
 		writeReq.validate(errors);
 
 		if (!errors.isEmpty()) {
-			return FROM_VIEW;
+			return FORM_VIEW;
 		}
 
 		int newArticleNo = writeService.write(writeReq);
